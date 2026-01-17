@@ -5,27 +5,27 @@
 @section('content')
 <h2 class="text-xl font-bold mb-4">Register</h2>
 
-<form method="POST">
+<form method="POST" action="{{ route('register') }}">
     @csrf
 
     <div class="mb-4">
         <label>Name</label>
-        <input type="text" class="w-full border p-2 rounded">
+        <input type="text" name="name" class="w-full border p-2 rounded">
     </div>
 
     <div class="mb-4">
         <label>Email</label>
-        <input type="email" class="w-full border p-2 rounded">
+        <input type="email" name="email" class="w-full border p-2 rounded">
     </div>
 
     <div class="mb-4">
         <label>Password</label>
-        <input type="password" class="w-full border p-2 rounded">
+        <input type="password" name="password" class="w-full border p-2 rounded">
     </div>
 
     <div class="mb-4">
         <label>Confirm Password</label>
-        <input type="password" class="w-full border p-2 rounded">
+        <input type="password" name="password_confirmation" class="w-full border p-2 rounded">
     </div>
 
     <button class="w-full bg-green-600 text-white py-2 rounded">
