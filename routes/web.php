@@ -17,5 +17,8 @@ Route::view('/register', 'auth.register')->name('register');
 Route::get('/register', [RegisterController::class, 'show'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'register'])->middleware('guest')->name('register');
 
-Route::view('/dashboard', 'dashboard')->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::view('/dashboard', 'dashboard')->middleware('auth');
+});
+
 Route::post('/logout', [LogoutController::class, 'logout'])->middleware('auth')->name('logout');
