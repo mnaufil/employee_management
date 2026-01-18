@@ -9,27 +9,63 @@
     </div>
 @endif
 
-<form method="POST" action="/profile/update">
+<form method="POST" action="/profile/update" class="space-y-6">
     @csrf
 
-    <div class="mb-4">
-        <label>Name</label>
-        <input type="text" name="name" value="{{ old('name', $user->name) }}">
+    {{-- Name --}}
+    <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+            Name
+        </label>
+
+        <input
+            type="text"
+            name="name"
+            value="{{ old('name', $user->name) }}"
+            class="w-full rounded-md border px-3 py-2
+                focus:outline-none focus:ring-2 focus:ring-blue-500
+                @error('name') border-red-500 @enderror"
+        >
+
         @error('name')
-            <div class="text-red-600">{{ $message }}</div>
+            <p class="mt-1 text-sm text-red-600">
+                {{ $message }}
+            </p>
         @enderror
     </div>
 
-    <div class="mb-4">
-        <label>Email</label>
-        <input type="email" name="email" value="{{ old('email', $user->email) }}">
+    {{-- Email --}}
+    <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+            Email
+        </label>
+
+        <input
+            type="email"
+            name="email"
+            value="{{ old('email', $user->email) }}"
+            class="w-full rounded-md border px-3 py-2
+                focus:outline-none focus:ring-2 focus:ring-blue-500
+                @error('email') border-red-500 @enderror"
+        >
+
         @error('email')
-            <div class="text-red-600">{{ $message }}</div>
+            <p class="mt-1 text-sm text-red-600">
+                {{ $message }}
+            </p>
         @enderror
     </div>
 
-    <button type="submit">
-        Update Profile
-    </button>
+    {{-- Submit --}}
+    <div>
+        <button
+            type="submit"
+            class="w-full bg-blue-600 text-white py-2 rounded-md
+                   hover:bg-blue-700 transition"
+        >
+            Update Profile
+        </button>
+    </div>
 </form>
+
 @endsection
