@@ -27,7 +27,7 @@ class LoginController extends Controller
 
                 //intended means to redirect to the page the 
                 //user wanted to access before being redirected to login
-                return redirect()->intended('/dashboard');
+                return redirect()->intended('/dashboard')->with('success', 'You are logged in!');
             }
 
             return back()->withErrors([

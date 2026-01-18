@@ -24,6 +24,11 @@
     </nav>
 
     <main class="max-w-md mx-auto mt-10 bg-white p-6 shadow rounded">
+        @if (session('success'))
+            <div class="bg-green-100 text-green-700 p-3 mb-4">
+                {{ session('success') }}
+            </div>
+        @endif
         @yield('content')
     </main>
 </body>
