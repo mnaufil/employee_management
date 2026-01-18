@@ -29,7 +29,7 @@ Route::middleware('web')->group(function () {
         Route::view('/dashboard', 'dashboard')->middleware('auth');
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::get('/profile/update', [ProfileController::class, 'update'])->name('profile.edit');
+        Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 
     });

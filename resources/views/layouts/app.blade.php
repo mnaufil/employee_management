@@ -8,9 +8,16 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-     <nav class="bg-white shadow p-4 flex justify-between">
+    <nav class="bg-white shadow p-4 flex justify-between">
         <h1 class="font-bold text-lg">Auth Profile App</h1>
         @if(auth()->check())
+        
+        <span class="text-white ml-auto pr-4">
+            <a href="/profile" class="text-blue-600 block">
+                My Profile
+            </a>
+        </span>
+
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button>Logout</button>
