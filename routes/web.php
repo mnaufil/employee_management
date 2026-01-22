@@ -30,8 +30,8 @@ Route::middleware('web')->group(function () {
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-
-
+        Route::get('/profile/change-password', [ProfileController::class, 'changePasswordForm']);
+        Route::post('/profile/change-password', [ProfileController::class, 'changePassword']);
     });
 
     Route::post('/logout', [LogoutController::class, 'logout'])->middleware('auth')->name('logout');
