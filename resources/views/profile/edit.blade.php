@@ -9,8 +9,25 @@
     </div>
 @endif
 
-<form method="POST" action="/profile/update" class="space-y-6">
+<form method="POST" action="/profile/update" enctype="multipart/form-data" class="space-y-6">
     @csrf
+
+    <div>
+        <label class="block text-sm font-medium mb-1">
+            Profile Photo
+        </label>
+
+        <input
+            type="file"
+            name="profile_photo"
+            class="w-full border rounded-md px-3 py-2
+                @error('profile_photo') border-red-500 @enderror"
+        >
+
+        @error('profile_photo')
+            <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
+        @enderror
+    </div>
 
     {{-- Name --}}
     <div>

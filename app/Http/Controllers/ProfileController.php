@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProfileController extends Controller
@@ -32,7 +33,21 @@ class ProfileController extends Controller
             ],
             'email' => ['required','email',
                     Rule::unique('users')->ignore($user->id)],
+            'profile_photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
         ]);
+
+        if($request->hasFile('profile_photo')){
+
+            if($user->profile_photo){
+                Storage::disk('public')->delete($user->profile_phot);
+            }
+
+            $path = $request->file('profile_photo')
+                            ->store('profile-photos', 'public');
+
+            $user->profile_photo = $path;
+
+        }
 
         $user->update($validatedData);
 

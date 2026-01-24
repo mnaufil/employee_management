@@ -1,9 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-<h2 class="text-2xl font-semibold text-gray-800 mb-6">
-    My Profile
-</h2>
+
+    <div class="text-center">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-6 ">
+            My Profile 
+
+            @if ($user->profile_photo)
+                <img
+                    src="{{ asset('storage/' . $user->profile_photo) }}"
+                    class="w-24 h-24 rounded-full object-cover mb-4 mx-auto"
+                    alt="Profile Photo"
+                >
+            @else
+                <div class="w-24 h-24 rounded-full bg-gray-300 flex items-center justify-center mb-4">
+                    <span class="text-gray-600">No Photo</span>
+                </div>
+            @endif
+
+        </h2>
+    </div>
 
 <div class="bg-white shadow rounded-lg p-6 space-y-4">
 
