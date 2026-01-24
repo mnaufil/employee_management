@@ -32,6 +32,7 @@ Route::middleware('web')->group(function () {
         Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
         Route::get('/profile/change-password', [ProfileController::class, 'changePasswordForm']);
         Route::post('/profile/change-password', [ProfileController::class, 'changePassword']);
+        Route::delete('/profile/photo', [ProfileController::class, 'deletePhoto']);
     });
 
     Route::post('/logout', [LogoutController::class, 'logout'])->middleware('auth')->name('logout');

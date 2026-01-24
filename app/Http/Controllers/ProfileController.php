@@ -39,11 +39,14 @@ class ProfileController extends Controller
         if($request->hasFile('profile_photo')){
 
             if($user->profile_photo){
-                Storage::disk('public')->delete($user->profile_phot);
+                Storage::disk('public')->delete($user->profile_photo);
             }
 
-            $path = $request->file('profile_photo')
-                            ->store('profile-photos', 'public');
+            $file = $request->file('profile_photo');
+
+            $extension = $file->getClientOriginalExtension();
+            $filename = 'user_'.$user->id.'.'.$extension;
+            $path = $file->storeAs('profile_photo', $filename, 'public');
 
             $user->profile_photo = $path;
 
@@ -76,6 +79,21 @@ class ProfileController extends Controller
         $user->save();
 
         return redirect('/profile')->with('success', 'Passord updated successfully');
+
+    }
+
+    public function deletePhoto(){
+
+        $user = auth()->user();
+
+        if($user->profile_photo){
+            Storage::disk('public')->delete($user->profile_photo);
+
+            $user->profile_photo = null;
+            $user->save();
+        }
+
+        return redirect('/profile')->with('success', 'Profile phot removed successfully');
 
     }
 
