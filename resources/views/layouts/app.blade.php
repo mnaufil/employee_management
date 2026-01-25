@@ -7,36 +7,69 @@
     <title>@yield('title', 'Auth Profile App')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
-    <nav class="bg-white shadow p-4 flex justify-between">
-        <h1 class="font-bold text-lg">Auth Profile App</h1>
-        @if(auth()->check())
-        
-        <span class="text-white ml-auto pr-4">
-            <a href="/profile" class="text-blue-600 block">
-                My Profile
-            </a>
-        </span>
 
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button>Logout</button>
-        </form>
-        @else
-            <div>
-                <a href="/login" class="mr-4">Login</a>
-                <a href="/register">Register</a>
-            </div>
-        @endif
+<body class="bg-slate-100 text-slate-800 antialiased">
+
+    {{-- Navbar --}}
+    <nav class="bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            
+            <h1 class="text-lg font-semibold tracking-tight text-slate-900">
+                Auth Profile App
+            </h1>
+
+            @if(auth()->check())
+                <div class="flex items-center gap-4">
+                    <a
+                        href="/profile"
+                        class="text-sm font-medium text-slate-600 hover:text-blue-600 transition"
+                    >
+                        My Profile
+                    </a>
+
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button
+                            class="text-sm font-medium text-red-500 hover:text-red-600 transition"
+                        >
+                            Logout
+                        </button>
+                    </form>
+                </div>
+            @else
+                <div class="flex items-center gap-4">
+                    <a
+                        href="/login"
+                        class="text-sm font-medium text-slate-600 hover:text-blue-600 transition"
+                    >
+                        Login
+                    </a>
+                    <a
+                        href="/register"
+                        class="text-sm font-medium text-blue-600 hover:text-blue-700 transition"
+                    >
+                        Register
+                    </a>
+                </div>
+            @endif
+
+        </div>
     </nav>
 
-    <main class="max-w-md mx-auto mt-10 bg-white p-6 shadow rounded">
-        @if (session('success'))
-            <div class="bg-green-100 text-green-700 p-3 mb-4">
-                {{ session('success') }}
-            </div>
-        @endif
-        @yield('content')
+    {{-- Page Content --}}
+    <main class="max-w-md mx-auto mt-12 px-4">
+        <div class="bg-white border border-slate-200 rounded-xl p-6">
+
+            @if (session('success'))
+                <div class="mb-4 rounded-md bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 text-sm">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @yield('content')
+
+        </div>
     </main>
+
 </body>
 </html>
