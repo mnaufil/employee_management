@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class ProfileController extends Controller
@@ -77,6 +79,8 @@ class ProfileController extends Controller
 
         $user->password = Hash::make($request->password);
         $user->save();
+
+        Auth::logoutOtherDevices($request->password);
 
         return redirect('/profile')->with('success', 'Passord updated successfully');
 

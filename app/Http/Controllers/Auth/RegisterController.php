@@ -54,6 +54,9 @@ class RegisterController extends Controller
 
         Auth::login($user);
 
+        // Send verification email
+        $user->sendEmailVerificationNotification();
+
         return redirect('/dashboard');
     }
 
