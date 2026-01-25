@@ -1,71 +1,100 @@
+# Auth Profile Management – Laravel 11
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+A **production-ready Authentication & Profile Management system** built with **Laravel 11** and **Tailwind CSS**, focusing on **security, clarity, and real-world best practices**.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This project was intentionally built **without Breeze, Jetstream, or UI kits** to deeply understand how Laravel authentication, sessions, validation, file uploads, and security actually work under the hood.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 🔐 Authentication
+- User Registration
+- User Login & Logout
+- Secure password hashing
+- Session regeneration after login
+- Rate-limited login attempts (anti brute-force)
+- Custom professional **429 – Too Many Requests** page
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 👤 Profile Management
+- View user profile
+- Update name & email
+- Unique validation (email & name)
+- Upload profile photo
+- Delete / replace profile photo
+- Profile photo named using **user ID**
+- Secure storage using Laravel filesystem
 
-## Learning Laravel
+### 🔑 Password Management
+- Change password
+- Current password verification
+- Logout from all other devices after password change
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🎨 UI / UX (Minimal SaaS Theme)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Minimal **blue / gray SaaS-style UI**
+- Built entirely with **Tailwind CSS**
+- No UI component libraries
+- Clean typography & spacing
+- Clear primary and secondary actions
+- Accessible form validation
+- Consistent layout across all pages
 
-## Laravel Sponsors
+### Pages Styled
+- Login
+- Register
+- Dashboard
+- Profile view
+- Edit profile
+- Change password
+- Custom error pages
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+The UI was intentionally kept **simple and professional**, prioritizing usability and consistency over visual noise.
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 🧠 Security Practices Implemented
 
-## Contributing
+- CSRF protection on all forms
+- Rate limiting on login (`throttle`)
+- Session fixation prevention
+- Password hashing using Laravel `Hash`
+- Logout all other sessions on password change
+- File upload validation (type & size)
+- Secure file storage outside public root
+- Controlled file naming (no user-supplied filenames)
+- Authorization via `auth()->user()` (never trusting request IDs)
+- Mass assignment protection
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 🛠 Tech Stack
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- **Laravel 11**
+- **PHP 8+**
+- **Tailwind CSS**
+- **MySQL**
+- **Vite**
+- **Git & GitHub**
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 📂 Project Structure (Key Files)
 
-## License
+app/
+├── Http/Controllers/
+│ ├── Auth/
+│ └── ProfileController.php
+├── Models/User.php
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+resources/
+├── views/
+│ ├── auth/
+│ ├── profile/
+│ ├── dashboard.blade.php
+│ └── layouts/app.blade.php
 
-# auth_profile_management
-Laravel Project involving authentication and profile management 
-
+routes/
+└── web.php
