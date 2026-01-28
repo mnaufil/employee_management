@@ -57,7 +57,7 @@
     </nav>
 
     {{-- Page Content --}}
-    <main class="max-w-md mx-auto mt-12 px-4">
+    <main class="max-w-[76rem] mx-auto mt-12 px-4">
         <div class="bg-white border border-slate-200 rounded-xl p-6">
 
             @if (session('success'))

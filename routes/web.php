@@ -1,12 +1,20 @@
 <?php
+use App\Models\Employee;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+
+
+Route::middleware(['auth'])->group(function (){
+    Route::resource('employees', EmployeeController::class);
+});
+
 
 Route::middleware('web')->group(function () {
     
