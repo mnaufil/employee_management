@@ -67,7 +67,7 @@
                                         Edit
                                     </a>
 
-                                    <form action="{{ route('employees.destroy', $employee) }}"
+                                    <form action="{{ route('employees.destroy', $employee->id) }}"
                                         method="POST"
                                         class="inline">
                                         @csrf

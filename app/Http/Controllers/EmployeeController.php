@@ -6,6 +6,7 @@ use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
+use Illuminate\Support\Facades\Redirect;
 
 class EmployeeController extends Controller
 {
@@ -16,7 +17,6 @@ class EmployeeController extends Controller
                     ->latest()
                     ->paginate(10)
                     ->withQueryString();
-        // dd($employees);
         return view('employees.index', compact('employees'));            
     }
 
@@ -37,19 +37,21 @@ class EmployeeController extends Controller
 
     public function show(string $id)
     {
-        //
+        
     }
 
-    public function edit(Employee $employee)
+    public function edit($id)
     {
-
-        // dd($employee);
+        
+        $employee = Employee::findorfail($id);
         return view('employees.edit', compact('employee'));
     }
 
-    public function update(UpdateEmployeeRequest $request, Employee $employee)
+    public function update(UpdateEmployeeRequest $request, $employee)
     {
-         $employee->update($request->validated());
+
+        $employee = Employee::findOrFail($employee);
+        $employee->update($request->validated());
 
         return redirect()
             ->route('employees.index')
@@ -58,6 +60,11 @@ class EmployeeController extends Controller
 
     public function destroy(string $id)
     {
-        //
+        $employee = Employee::findOrFail($id);
+        $employee->delete();
+
+        return redirect()
+                ->route("employees.index")
+                ->with('success', 'Employee deleted Successfully');
     }
 }
