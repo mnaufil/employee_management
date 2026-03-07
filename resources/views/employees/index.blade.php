@@ -9,6 +9,10 @@
                 Employee Management
             </h1>
 
+            <a href="{{ route('employees.trashed') }}"
+            class="bg-red-600  hover:bg-red-700 text-white px-4 py-2 rounded-lg">
+                Deleted Employees
+            </a>
             <a href="{{ route('employees.create') }}"
             class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
                 + Add Employee

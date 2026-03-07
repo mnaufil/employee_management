@@ -67,4 +67,39 @@ class EmployeeController extends Controller
                 ->route("employees.index")
                 ->with('success', 'Employee deleted Successfully');
     }
+
+    public function trashed(){
+        // dd('test');
+        $employees = Employee::onlyTrashed()->get();
+        return view('employees.trashed', compact('employees'));
+
+    }
+
+    public function restore($employee){
+
+        $employee = Employee::withTrashed()->findOrFail($employee);
+        $employee->restore();
+        
+        return redirect()
+                ->route('employees.trashed')
+                ->with('success', 'Employee restored successfully');
+    }
+
+    public function forceDelete($id){
+        $employee = Employee::withTrashed()->findOrFail($id);
+        $employee->forceDelete();
+
+        return redirect()
+                ->route('employees.trashed')
+                ->with('success', 'Employee permanently deleted');
+
+    }
+
+
+
+
+
+
+
+
 }

@@ -12,9 +12,17 @@ use Illuminate\Http\Request;
 
 
 Route::middleware(['auth'])->group(function (){
+    
+    Route::get('/employees/trashed', [EmployeeController::class, 'trashed'])
+    ->name('employees.trashed');
+    
+    Route::put('/employees/{employee}/restore', [EmployeeController::class, 'restore'])
+    ->name('employees.restore');
+    Route::delete('/employees/{employee}/force-delete', [EmployeeController::class, 'forceDelete'])
+    ->name('employees.forceDelete');
+    
     Route::resource('employees', EmployeeController::class);
 });
-
 
 Route::middleware('web')->group(function () {
     
