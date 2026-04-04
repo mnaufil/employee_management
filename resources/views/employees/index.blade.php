@@ -8,14 +8,14 @@
             <h1 class="text-3xl font-semibold text-gray-800">
                 Employee Management
             </h1>
+            <a href="{{ route('employees.create') }}"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
+                + Add Employee
+            </a>
 
             <a href="{{ route('employees.trashed') }}"
             class="bg-red-600  hover:bg-red-700 text-white px-4 py-2 rounded-lg">
                 Deleted Employees
-            </a>
-            <a href="{{ route('employees.create') }}"
-            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
-                + Add Employee
             </a>
         </div>
 
@@ -27,18 +27,6 @@
                 </div>
             @endif
             <form method="GET" action="{{ route('employees.index') }}" class="mb-6 flex gap-3">
-                <input
-                    type="text"
-                    name="search"
-                    value="{{ request('search') }}"
-                    placeholder="Search employees..."
-                    class="w-1/3 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-blue-200"
-                >
-
-                <button
-                    class="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg">
-                button Search
-                </button>
 
                 @if(request('search'))
                     <a href="{{ route('employees.index') }}"
@@ -48,7 +36,11 @@
                 @endif
             </form>
             <div class="overflow-x-auto">
-                <table class="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+                <div id="app">
+                    <employee-search></employee-search>
+                </div>
+                
+                {{-- <table class="min-w-full border border-gray-200 rounded-lg overflow-hidden">
                     <thead class="bg-gray-100 text-gray-700">
                         <tr>
                             <th class="px-4 py-3 text-left">Name</th>
@@ -92,7 +84,7 @@
                             </tr>
                         @endforelse
                     </tbody>
-                </table>
+                </table> --}}
             </div>
             <div class="mt-6">
                 {{ $employees->links() }}

@@ -95,11 +95,19 @@ class EmployeeController extends Controller
 
     }
 
+    public function search(Request $request){
+        
+        $search = $request->search;
 
+        $employees = Employee::query()
+                    ->when($search, function($query) use ($search){
+                        $query->search($search);
+                    })
+                    ->latest()
+                    ->paginate(5);
 
+        return response()->json($employees);
 
-
-
-
+    }
 
 }
