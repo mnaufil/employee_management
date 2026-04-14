@@ -21,13 +21,13 @@
 
             <tbody>
                 <tr v-for="emp in employees" :key="emp?.id" class="hover:bg-gray-50">
-                    <td class="px-4 py-3">{{ emp.name }}</td>
-                    <td class="px-4 py-3">{{ emp.email }}</td>
-                    <td class="px-4 py-3">{{ emp.phone || '-' }}</td>
-                    <td class="px-4 py-3">{{ emp.designation || '-' }}</td>
+                    <td class="px-4">{{ emp.name }}</td>
+                    <td class="px-4">{{ emp.email }}</td>
+                    <td class="px-4">{{ emp.phone || '-' }}</td>
+                    <td class="px-4">{{ emp.designation || '-' }}</td>
 
                     <!-- ACTION COLUMN -->
-                    <td class="px-6 py-4 text-center">
+                    <td class="px-4 text-center">
     <div class="flex items-center justify-center gap-3">
         <a
             :href="`/employees/${emp.id}/edit`"
@@ -56,7 +56,7 @@
 
                 <!-- Empty state -->
                 <tr v-if="employees.length === 0">
-                    <td colspan="5" class="px-4 py-6 text-center text-gray-500">
+                    <td colspan="5" class="px-4 text-center text-gray-500">
                         No employees found.
                     </td>
                 </tr>

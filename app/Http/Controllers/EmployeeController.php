@@ -39,6 +39,10 @@ class EmployeeController extends Controller
     {
         
     }
+    public function list(string $id)
+    {
+        
+    }
 
     public function edit($id)
     {

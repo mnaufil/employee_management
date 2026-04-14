@@ -55,11 +55,11 @@ Route::middleware('web')->group(function () {
     })->middleware(['auth', 'signed'])->name('verification.verify');
 
     // Resend verification email
-    Route::post('/email/verification-notification', function (Request $request) {
-        $request->user()->sendEmailVerificationNotification();
+    // Route::post('/email/verification-notification', function (Request $request) {
+    //     $request->user()->sendEmailVerificationNotification();
 
-        return back()->with('success', 'Verification email sent');
-    })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+    //     return back()->with('success', 'Verification email sent');
+    // })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
     Route::middleware('auth')->group(function () {
         Route::view('/dashboard', 'dashboard')->middleware('auth');
