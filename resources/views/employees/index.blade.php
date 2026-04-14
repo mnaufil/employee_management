@@ -3,24 +3,23 @@
 @section('content')
     <div class="max-w-7xl mx-auto px-6 py-8">
 
-        <!-- Page Header -->
-        <div class="flex justify-between items-center mb-6">
-            <h1 class="text-3xl font-semibold text-gray-800">
-                Employee Management
-            </h1>
-            <a href="{{ route('employees.create') }}"
-            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
-                + Add Employee
-            </a>
-
-            <a href="{{ route('employees.trashed') }}"
-            class="bg-red-600  hover:bg-red-700 text-white px-4 py-2 rounded-lg">
-                Deleted Employees
-            </a>
-        </div>
-
         <!-- Card -->
         <div class="bg-white shadow rounded-lg p-6">
+            <!-- Page Header -->
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-semibold text-gray-800">
+                    Employee Management
+                </h1>
+                <a href="{{ route('employees.create') }}"
+                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
+                    + Add Employee
+                </a>
+
+                <a href="{{ route('employees.trashed') }}"
+                class="bg-red-600  hover:bg-red-700 text-white px-4 py-2 rounded-lg">
+                    Deleted Employees
+                </a>
+            </div>
             @if (session('success'))
                 <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
                     {{ session('success') }}
@@ -86,9 +85,9 @@
                     </tbody>
                 </table> --}}
             </div>
-            <div class="mt-6">
+            {{-- <div class="mt-6">
                 {{ $employees->links() }}
-            </div>
+            </div> --}}
         </div>
 
     </div>

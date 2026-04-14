@@ -15,6 +15,7 @@ class ProfileController extends Controller
     public function index()
     {
         $user = auth()->user();
+        // dd($user);
         return view('profile.index', compact('user'));
     }
 
@@ -49,11 +50,11 @@ class ProfileController extends Controller
             $extension = $file->getClientOriginalExtension();
             $filename = 'user_'.$user->id.'.'.$extension;
             $path = $file->storeAs('profile_photo', $filename, 'public');
-
-            $user->profile_photo = $path;
+            
+            $validatedData['profile_photo'] = $path;
 
         }
-
+        // dd($validatedData);
         $user->update($validatedData);
 
         return redirect()->route('profile')->with('success', 'Profile updated successfully.');

@@ -19,13 +19,22 @@
             </h1>
 
             @if(auth()->check())
-                <div class="flex items-center gap-4">
-                    <a
-                        href="/profile"
-                        class="text-sm font-medium text-slate-600 hover:text-blue-600 transition"
-                    >
-                        My Profile
-                    </a>
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-4">
+                        <a
+                            href="/employees"
+                            class="text-sm font-medium text-slate-600 hover:text-blue-600 transition"
+                        >
+                            Employees
+                        </a>
+                        
+                        <a
+                            href="/profile"
+                            class="text-sm font-medium text-slate-600 hover:text-blue-600 transition"
+                        >
+                            My Profile
+                        </a>
+                    </div>
 
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
@@ -57,8 +66,8 @@
     </nav>
 
     {{-- Page Content --}}
-    <main class="max-w-[76rem] mx-auto mt-12 px-4">
-        <div class="bg-white border border-slate-200 rounded-xl p-6">
+    <main class="max-w-[76rem] mx-auto px-4">
+        {{-- <div class="bg-white border border-slate-200 rounded-xl p-6">
 
             @if (session('success'))
                 <div class="mb-4 rounded-md bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 text-sm">
@@ -66,9 +75,9 @@
                 </div>
             @endif
 
-            @yield('content')
-
-        </div>
+            
+        </div> --}}
+        @yield('content')
     </main>
 
 </body>
